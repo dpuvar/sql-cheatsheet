@@ -1,0 +1,101 @@
+-->conditional statement 
+set serveroutput on;
+declare
+
+e_num int := 9; 
+
+begin
+ if e_num > 18 then
+    dbms_output.put_line('you can drive');
+ 
+ end if;
+    dbms_output.put_line('all d best');
+end;
+
+declare
+
+e_num int := 9; 
+
+begin
+ if e_num > 18 then
+    dbms_output.put_line('you can drive');
+ else
+    dbms_output.put_line('you cannot drive');
+ end if;
+    dbms_output.put_line('all d best');
+end;
+
+declare
+
+e_num int := 9; 
+
+begin
+ if e_num > 18 then
+    dbms_output.put_line('you can drive');
+ else
+    dbms_output.put_line('you cannot drive');
+ end if;
+    dbms_output.put_line('all d best');
+end;
+
+declare
+
+e_num varchar(20) := 'F'; 
+
+begin
+ if e_num = 'A' then
+    dbms_output.put_line('A-grade');
+ elsif e_num = 'B' then
+    dbms_output.put_line('B-grade');
+ 
+ elsif e_num = 'C' then
+    dbms_output.put_line('C-grade');
+ 
+ elsif e_num = 'D' then
+    dbms_output.put_line('D-grade');
+ else
+    dbms_output.put_line('fail');
+ end if;
+    dbms_output.put_line('all d best');
+end;
+
+-->loop
+simple-->
+
+
+declare
+counter int:= 0;
+
+begin
+loop
+counter:= counter + 1;
+    dbms_output.put_line('counter is = '|| counter);
+ 
+ if counter >=10 then
+    exit;
+  end if;
+ 
+--  exit when counter=10;
+end loop;
+end;
+
+while-->
+declare
+counter int:= 0;
+
+begin
+while counter <= 10  loop
+    dbms_output.put_line('counter is = '|| counter);
+counter:= counter + 1;
+end loop;
+end;
+
+for-->
+declare
+begin
+for counter in reverse 1..10 loop
+    dbms_output.put_line('counter is = '|| counter);
+end loop;
+end;
+
+

@@ -1,0 +1,98 @@
+-->row datatype
+
+
+declare
+emp employee%rowtype;
+begin
+select * into emp from employee
+where empno=1002;
+
+dbms_output.put_line('employee name is : '|| emp.f_name ||'  '|| emp.salary);
+end;
+
+-->row datatype
+for select specific column
+
+declare
+emp employee%rowtype;
+begin
+select f_name into emp.f_name from employee
+where empno=1002;
+
+dbms_output.put_line('employee name is : '|| emp.f_name);
+end;
+
+-->anchored datatype
+
+
+declare
+emp employee.f_name%type;
+begin
+select f_name into emp from employee
+where empno=1002;
+
+dbms_output.put_line('employee name is : '|| emp);
+end;
+
+-->cursor datatype
+declare 
+
+cursor dhruv is
+select f_name,salary from employee
+where empno= 1002;
+
+var_emp dhruv%rowtype;
+
+begin
+open dhruv;
+fetch dhruv into var_emp;
+
+dbms_output.put_line('employee name is : '|| var_emp.f_name);
+dbms_output.put_line('employee salary is : '|| var_emp.salary);
+close dhruv;
+end;
+
+
+-->cursor datatype  with loop
+declare 
+
+cursor dhruv is
+select f_name,salary from employee
+where empno>1002;
+
+var_emp dhruv%rowtype;
+
+begin
+open dhruv;
+loop
+fetch dhruv into var_emp;
+exit when dhruv%notfound;
+
+dbms_output.put_line('employee name is : '|| var_emp.f_name);
+dbms_output.put_line('employee salary is : '|| var_emp.salary);
+end loop;
+close dhruv;
+end;
+
+
+-->cursor datatype  with cursor for loop
+
+declare
+  cursor  dhruv is 
+  select  f_name,salary from  employee 
+  where  empno<1004;
+  
+  v_emp dhruv%ROWTYPE;
+begin
+  for v_emp in dhruv
+    loop
+      DBMS_OUTPUT.PUT_LINE(v_emp.f_name||' '||v_emp.salary);
+    end loop;
+end;
+
+
+
+
+
+
+

@@ -1,0 +1,105 @@
+--> variables
+
+set serveroutput on;
+declare
+
+fname varchar2(20):='dhruv';
+
+begin
+
+fname:='puvar';
+dbms_output.put_line(fname);
+end;
+/
+
+--> select into var
+
+set serveroutput on;
+declare 
+e_salary int;
+
+begin
+ select salary into e_salary from employee
+ where empno =1001;
+ dbms_output.put_line(e_salary);
+end;
+/
+
+
+--> select into multiple var
+
+set serveroutput on;
+declare 
+e_salary int;
+fname varchar2(20);
+
+begin
+ select salary,f_name into e_salary,fname from employee
+ where empno =1001;
+ dbms_output.put_line(fname || ' has salary '||e_salary);
+end;
+/
+
+--> var  --> column%type
+
+set serveroutput on;
+declare 
+fname employee.f_name%type;
+
+begin
+ select f_name into fname from employee
+ where empno =1001;
+ dbms_output.put_line(fname);
+end;
+/
+
+--> const vars
+
+set serveroutput on;
+declare 
+pi constant int(7,6):=3.14532;
+
+begin
+ dbms_output.put_line(pi);
+end;
+/
+
+--> constant only in declare
+--> aavu karse to error avse
+set serveroutput on;
+declare 
+pi constant int(7,6);
+
+begin
+ pi :=3.14532;
+
+ dbms_output.put_line(pi);
+end;
+/
+
+-->default
+set serveroutput on;
+declare
+
+pi constant int(7,6) default 3.14532;
+
+begin
+ dbms_output.put_line(pi);
+end;
+/
+
+-->not null
+set serveroutput on;
+declare
+
+pi constant int(7,6) not null default 3.14532;
+
+begin
+ dbms_output.put_line(pi);
+end;
+/
+
+
+
+
+

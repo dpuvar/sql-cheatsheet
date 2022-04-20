@@ -1,0 +1,71 @@
+--> exception datatype using call raise
+
+declare 
+var_num int := 45;
+var_deno int := 5;
+result int;
+exdiv_zero exception;
+
+begin
+
+if var_deno = 0 then
+  raise exdiv_zero;
+end if;
+
+result := var_num / var_deno;
+  dbms_output.put_line('division ans is : '|| result);
+
+exception when exdiv_zero then
+  dbms_output.put_line('error your denominator is 0!!');
+end;
+
+
+-->using function :=  raise_application_error(a,x,y)
+a = error no. =\like --> - 21021
+x string
+y not compulsory
+
+-- accept age int prompt 'enter your age : ';
+
+
+declare 
+-- age int := &var_age;
+age int := 12;
+
+begin
+
+if age<18 then
+  raise_application_error(-20001,'your age should be 18 or above for the drinks');
+
+end if;
+
+  dbms_output.put_line('you can drink');
+
+exception when others then
+  dbms_output.put_line(sqlerrm);
+end;
+
+
+
+-->using function :=  pragma exception_init(a,x)
+a = error no. =\like --> - 21021
+x string
+
+declare 
+ex_age exception;
+age int := 19;
+pragma exception_init(ex_age,-20109);
+begin
+
+if age<18 then
+  raise_application_error(-20109,'your age should be 18 or above for the drinks');
+
+end if;
+
+  dbms_output.put_line('you can drink');
+
+exception when ex_age then
+  dbms_output.put_line(sqlerrm);
+end;
+
+

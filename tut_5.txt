@@ -1,0 +1,42 @@
+-->function to find area can be parameterized or not
+
+-- create or replace function circle_area(rad float)
+-- return float is
+-- pi constant int(7,3) :=3.141;
+-- area int (7,3);
+
+-- begin
+-- area :=pi*(rad*rad);
+
+-- return area;
+
+-- end;
+
+
+
+
+-->procedure  parameterized 
+--> always void returns nothing
+
+
+begin 
+  DBMS_OUTPUT.PUT_LINE(circle_area(25));
+end;
+
+-->function to find area
+create or replace procedure dhruv is
+var_name varchar(20) := 'dhruv';
+var_sal varchar(20) := '25252';
+
+begin
+  dbms_output.put_line('name is : '|| var_name || 'salary is : '||var_sal);
+end dhruv;
+
+
+execute dhruv;
+
+exec dhruv;
+
+begin
+  dhruv;
+end dhruv;
